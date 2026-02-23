@@ -1,0 +1,1400 @@
+# <!DOCTYPE html>
+
+# <html lang="pt-BR">
+
+# <head>
+
+# <meta charset="UTF-8">
+
+# <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+# <title>Plano de Manutenção Preventiva — MAC OPUS</title>
+
+# <style>
+
+# &nbsp; @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400\&family=DM+Mono:wght@400;500\&family=DM+Sans:wght@300;400;500;600\&display=swap');
+
+# 
+
+# &nbsp; :root {
+
+# &nbsp;   --bg: #0a0a0a;
+
+# &nbsp;   --surface: #111111;
+
+# &nbsp;   --surface2: #161616;
+
+# &nbsp;   --border: #2a2a2a;
+
+# &nbsp;   --border-gold: rgba(196,160,80,0.25);
+
+# &nbsp;   --gold: #c4a050;
+
+# &nbsp;   --gold-light: #e8c878;
+
+# &nbsp;   --gold-dim: #7a6030;
+
+# &nbsp;   --text: #e8e4d8;
+
+# &nbsp;   --text-dim: #7a7060;
+
+# &nbsp;   --text-mid: #a89878;
+
+# &nbsp;   --red: #c47858;
+
+# &nbsp;   --yellow: #c4a050;
+
+# &nbsp;   --green: #7a9868;
+
+# &nbsp;   --purple: #8878a8;
+
+# &nbsp;   --blue: #6888a8;
+
+# &nbsp;   --teal: #589888;
+
+# &nbsp; }
+
+# 
+
+# &nbsp; \* { box-sizing: border-box; margin: 0; padding: 0; }
+
+# 
+
+# &nbsp; body {
+
+# &nbsp;   background: var(--bg);
+
+# &nbsp;   color: var(--text);
+
+# &nbsp;   font-family: 'DM Sans', sans-serif;
+
+# &nbsp;   min-height: 100vh;
+
+# &nbsp;   overflow-x: hidden;
+
+# &nbsp; }
+
+# 
+
+# &nbsp; /\* ── HEADER ── \*/
+
+# &nbsp; .header {
+
+# &nbsp;   background: linear-gradient(160deg, #0e0c08 0%, #0a0a0a 60%, #0c0e08 100%);
+
+# &nbsp;   border-bottom: 1px solid var(--border-gold);
+
+# &nbsp;   padding: 48px 56px 40px;
+
+# &nbsp;   position: relative;
+
+# &nbsp;   overflow: hidden;
+
+# &nbsp; }
+
+# &nbsp; .header::before {
+
+# &nbsp;   content: '';
+
+# &nbsp;   position: absolute;
+
+# &nbsp;   top: -80px; right: -80px;
+
+# &nbsp;   width: 420px; height: 420px;
+
+# &nbsp;   background: radial-gradient(circle, rgba(196,160,80,0.07) 0%, transparent 65%);
+
+# &nbsp;   pointer-events: none;
+
+# &nbsp; }
+
+# &nbsp; .header::after {
+
+# &nbsp;   content: '';
+
+# &nbsp;   position: absolute;
+
+# &nbsp;   bottom: 0; left: 0; right: 0;
+
+# &nbsp;   height: 1px;
+
+# &nbsp;   background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
+# &nbsp;   opacity: 0.4;
+
+# &nbsp; }
+
+# 
+
+# &nbsp; /\* LOGO \*/
+
+# &nbsp; .logo-wrap {
+
+# &nbsp;   display: flex; align-items: center; gap: 18px;
+
+# &nbsp;   margin-bottom: 36px;
+
+# &nbsp; }
+
+# &nbsp; .logo-mark {
+
+# &nbsp;   width: 54px; height: 54px;
+
+# &nbsp;   border: 1.5px solid var(--gold);
+
+# &nbsp;   border-radius: 4px;
+
+# &nbsp;   display: flex; align-items: center; justify-content: center;
+
+# &nbsp;   position: relative;
+
+# &nbsp;   background: rgba(196,160,80,0.05);
+
+# &nbsp;   flex-shrink: 0;
+
+# &nbsp; }
+
+# &nbsp; .logo-mark::before {
+
+# &nbsp;   content: '';
+
+# &nbsp;   position: absolute; inset: 4px;
+
+# &nbsp;   border: 1px solid rgba(196,160,80,0.3);
+
+# &nbsp;   border-radius: 2px;
+
+# &nbsp; }
+
+# &nbsp; .logo-m {
+
+# &nbsp;   font-family: 'Cormorant Garamond', serif;
+
+# &nbsp;   font-size: 26px; font-weight: 600;
+
+# &nbsp;   color: var(--gold);
+
+# &nbsp;   letter-spacing: -1px;
+
+# &nbsp;   line-height: 1;
+
+# &nbsp; }
+
+# &nbsp; .logo-text { display: flex; flex-direction: column; gap: 1px; }
+
+# &nbsp; .logo-name {
+
+# &nbsp;   font-family: 'Cormorant Garamond', serif;
+
+# &nbsp;   font-size: 22px; font-weight: 600;
+
+# &nbsp;   color: var(--gold-light);
+
+# &nbsp;   letter-spacing: 0.18em;
+
+# &nbsp;   line-height: 1;
+
+# &nbsp;   text-transform: uppercase;
+
+# &nbsp; }
+
+# &nbsp; .logo-sub {
+
+# &nbsp;   font-size: 10px; font-weight: 400;
+
+# &nbsp;   color: var(--text-mid);
+
+# &nbsp;   letter-spacing: 0.25em;
+
+# &nbsp;   text-transform: uppercase;
+
+# &nbsp;   font-family: 'DM Mono', monospace;
+
+# &nbsp; }
+
+# &nbsp; .logo-divider {
+
+# &nbsp;   width: 1px; height: 42px;
+
+# &nbsp;   background: linear-gradient(to bottom, transparent, var(--border-gold), transparent);
+
+# &nbsp;   margin: 0 6px;
+
+# &nbsp; }
+
+# &nbsp; .logo-tagline {
+
+# &nbsp;   font-size: 11px; color: var(--text-dim);
+
+# &nbsp;   letter-spacing: 0.12em; text-transform: uppercase;
+
+# &nbsp;   font-family: 'DM Mono', monospace;
+
+# &nbsp;   line-height: 1.6;
+
+# &nbsp; }
+
+# 
+
+# &nbsp; .header-badge {
+
+# &nbsp;   display: inline-flex; align-items: center; gap: 8px;
+
+# &nbsp;   background: rgba(196,160,80,0.08);
+
+# &nbsp;   border: 1px solid var(--border-gold);
+
+# &nbsp;   border-radius: 100px;
+
+# &nbsp;   padding: 5px 14px;
+
+# &nbsp;   font-family: 'DM Mono', monospace;
+
+# &nbsp;   font-size: 11px;
+
+# &nbsp;   color: var(--gold-dim);
+
+# &nbsp;   letter-spacing: 0.08em;
+
+# &nbsp;   margin-bottom: 18px;
+
+# &nbsp;   text-transform: uppercase;
+
+# &nbsp; }
+
+# &nbsp; .header-badge::before { content: '◆'; font-size: 7px; color: var(--gold); }
+
+# 
+
+# &nbsp; h1 {
+
+# &nbsp;   font-family: 'Cormorant Garamond', serif;
+
+# &nbsp;   font-size: clamp(30px, 4.5vw, 50px);
+
+# &nbsp;   font-weight: 300;
+
+# &nbsp;   line-height: 1.12;
+
+# &nbsp;   color: var(--text);
+
+# &nbsp;   margin-bottom: 10px;
+
+# &nbsp;   letter-spacing: 0.01em;
+
+# &nbsp; }
+
+# &nbsp; h1 em { color: var(--gold-light); font-style: italic; font-weight: 400; }
+
+# 
+
+# &nbsp; .header-sub {
+
+# &nbsp;   color: var(--text-dim);
+
+# &nbsp;   font-size: 13px;
+
+# &nbsp;   font-weight: 300;
+
+# &nbsp;   margin-bottom: 32px;
+
+# &nbsp;   max-width: 620px;
+
+# &nbsp;   line-height: 1.7;
+
+# &nbsp;   letter-spacing: 0.02em;
+
+# &nbsp; }
+
+# 
+
+# &nbsp; .stats-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+# &nbsp; .stat {
+
+# &nbsp;   background: var(--surface2);
+
+# &nbsp;   border: 1px solid var(--border-gold);
+
+# &nbsp;   border-radius: 6px;
+
+# &nbsp;   padding: 14px 22px;
+
+# &nbsp;   position: relative; overflow: hidden;
+
+# &nbsp; }
+
+# &nbsp; .stat::after {
+
+# &nbsp;   content: '';
+
+# &nbsp;   position: absolute; top: 0; left: 0; right: 0; height: 1px;
+
+# &nbsp;   background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
+# &nbsp;   opacity: 0.5;
+
+# &nbsp; }
+
+# &nbsp; .stat-val {
+
+# &nbsp;   font-family: 'Cormorant Garamond', serif;
+
+# &nbsp;   font-size: 28px; font-weight: 400;
+
+# &nbsp;   color: var(--gold-light);
+
+# &nbsp;   line-height: 1;
+
+# &nbsp;   margin-bottom: 3px;
+
+# &nbsp; }
+
+# &nbsp; .stat-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'DM Mono', monospace; }
+
+# 
+
+# &nbsp; /\* ── CONTROLS ── \*/
+
+# &nbsp; .controls {
+
+# &nbsp;   padding: 22px 56px;
+
+# &nbsp;   background: var(--surface);
+
+# &nbsp;   border-bottom: 1px solid var(--border);
+
+# &nbsp;   display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+
+# &nbsp; }
+
+# &nbsp; .search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 380px; }
+
+# &nbsp; .search-wrap svg {
+
+# &nbsp;   position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+
+# &nbsp;   color: var(--text-dim); width: 15px; height: 15px;
+
+# &nbsp; }
+
+# &nbsp; input\[type="search"] {
+
+# &nbsp;   width: 100%; background: var(--bg); border: 1px solid var(--border);
+
+# &nbsp;   border-radius: 6px; padding: 9px 12px 9px 36px;
+
+# &nbsp;   color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px;
+
+# &nbsp;   outline: none; transition: border-color 0.2s;
+
+# &nbsp; }
+
+# &nbsp; input\[type="search"]::placeholder { color: var(--text-dim); }
+
+# &nbsp; input\[type="search"]:focus { border-color: var(--gold); }
+
+# 
+
+# &nbsp; .filter-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+# &nbsp; .chip {
+
+# &nbsp;   background: var(--bg); border: 1px solid var(--border);
+
+# &nbsp;   border-radius: 100px; padding: 6px 14px;
+
+# &nbsp;   font-size: 11px; font-weight: 500; color: var(--text-dim);
+
+# &nbsp;   cursor: pointer; transition: all 0.18s; white-space: nowrap;
+
+# &nbsp;   font-family: 'DM Mono', monospace; letter-spacing: 0.04em;
+
+# &nbsp; }
+
+# &nbsp; .chip:hover { border-color: var(--gold); color: var(--gold); }
+
+# &nbsp; .chip.active {
+
+# &nbsp;   background: var(--gold); border-color: var(--gold);
+
+# &nbsp;   color: #0a0a0a; font-weight: 600;
+
+# &nbsp; }
+
+# 
+
+# &nbsp; /\* ── MAIN ── \*/
+
+# &nbsp; .main { padding: 32px 56px; }
+
+# 
+
+# &nbsp; .category-block {
+
+# &nbsp;   background: var(--surface);
+
+# &nbsp;   border: 1px solid var(--border);
+
+# &nbsp;   border-radius: 8px;
+
+# &nbsp;   margin-bottom: 14px;
+
+# &nbsp;   overflow: hidden;
+
+# &nbsp;   transition: border-color 0.2s, box-shadow 0.2s;
+
+# &nbsp; }
+
+# &nbsp; .category-block:hover { border-color: var(--border-gold); box-shadow: 0 4px 40px rgba(196,160,80,0.04); }
+
+# 
+
+# &nbsp; .cat-header {
+
+# &nbsp;   display: flex; align-items: center; gap: 16px;
+
+# &nbsp;   padding: 18px 24px; cursor: pointer;
+
+# &nbsp;   background: var(--surface2); transition: background 0.18s;
+
+# &nbsp;   user-select: none;
+
+# &nbsp; }
+
+# &nbsp; .cat-header:hover { background: #1a1a1a; }
+
+# &nbsp; .cat-icon {
+
+# &nbsp;   width: 36px; height: 36px; border-radius: 6px;
+
+# &nbsp;   display: flex; align-items: center; justify-content: center;
+
+# &nbsp;   font-size: 16px; flex-shrink: 0;
+
+# &nbsp;   border: 1px solid var(--border-gold);
+
+# &nbsp;   background: rgba(196,160,80,0.06);
+
+# &nbsp; }
+
+# &nbsp; .cat-info { flex: 1; }
+
+# &nbsp; .cat-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 2px; letter-spacing: 0.01em; }
+
+# &nbsp; .cat-count { font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; }
+
+# &nbsp; .cat-chevron { color: var(--gold-dim); transition: transform 0.25s; font-size: 16px; flex-shrink: 0; }
+
+# &nbsp; .cat-header.open .cat-chevron { transform: rotate(90deg); color: var(--gold); }
+
+# 
+
+# &nbsp; .items-table { display: none; }
+
+# &nbsp; .items-table.open { display: block; }
+
+# 
+
+# &nbsp; table { width: 100%; border-collapse: collapse; }
+
+# &nbsp; thead tr { background: rgba(196,160,80,0.04); }
+
+# &nbsp; th {
+
+# &nbsp;   padding: 10px 18px;
+
+# &nbsp;   font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+
+# &nbsp;   color: var(--gold-dim); font-family: 'DM Mono', monospace;
+
+# &nbsp;   text-align: left; font-weight: 500;
+
+# &nbsp;   border-bottom: 1px solid var(--border);
+
+# &nbsp; }
+
+# &nbsp; td {
+
+# &nbsp;   padding: 14px 18px; font-size: 13px; color: var(--text);
+
+# &nbsp;   border-bottom: 1px solid rgba(30,30,30,0.8);
+
+# &nbsp;   vertical-align: middle; line-height: 1.5;
+
+# &nbsp; }
+
+# &nbsp; tr:last-child td { border-bottom: none; }
+
+# &nbsp; tr:hover td { background: rgba(196,160,80,0.02); }
+
+# 
+
+# &nbsp; /\* FREQUENCY BADGES \*/
+
+# &nbsp; .freq-badge {
+
+# &nbsp;   display: inline-flex; align-items: center; gap: 5px;
+
+# &nbsp;   padding: 4px 10px; border-radius: 100px;
+
+# &nbsp;   font-size: 10.5px; font-family: 'DM Mono', monospace; font-weight: 500;
+
+# &nbsp;   white-space: nowrap; border: 1px solid transparent;
+
+# &nbsp; }
+
+# &nbsp; .freq-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+# 
+
+# &nbsp; .freq-diaria     { background: rgba(196,120,88,0.1); color: #c47858; border-color: rgba(196,120,88,0.2); }
+
+# &nbsp; .freq-semanal    { background: rgba(196,160,80,0.1); color: var(--gold); border-color: var(--border-gold); }
+
+# &nbsp; .freq-quinzenal  { background: rgba(200,180,100,0.1); color: #c8b464; border-color: rgba(200,180,100,0.2); }
+
+# &nbsp; .freq-mensal     { background: rgba(232,200,120,0.1); color: var(--gold-light); border-color: rgba(232,200,120,0.2); }
+
+# &nbsp; .freq-bimestral  { background: rgba(180,170,120,0.1); color: #b4aa78; border-color: rgba(180,170,120,0.2); }
+
+# &nbsp; .freq-trimestral { background: rgba(120,152,104,0.1); color: var(--green); border-color: rgba(120,152,104,0.2); }
+
+# &nbsp; .freq-quadrimestral { background: rgba(100,140,100,0.1); color: #88b084; border-color: rgba(100,140,100,0.2); }
+
+# &nbsp; .freq-semestral  { background: rgba(104,136,168,0.1); color: var(--blue); border-color: rgba(104,136,168,0.2); }
+
+# &nbsp; .freq-anual      { background: rgba(136,120,168,0.1); color: var(--purple); border-color: rgba(136,120,168,0.2); }
+
+# &nbsp; .freq-bianual    { background: rgba(88,152,136,0.1); color: var(--teal); border-color: rgba(88,152,136,0.2); }
+
+# &nbsp; .freq-trianual   { background: rgba(100,120,100,0.1); color: #90a888; border-color: rgba(100,120,100,0.2); }
+
+# 
+
+# &nbsp; /\* RESPONSIBLE \*/
+
+# &nbsp; .resp { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-mid); }
+
+# &nbsp; .resp-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+# &nbsp; .resp-local  { background: var(--gold); }
+
+# &nbsp; .resp-cap    { background: var(--teal); }
+
+# &nbsp; .resp-espec  { background: var(--purple); }
+
+# &nbsp; .resp-mixed  { background: var(--text-dim); }
+
+# 
+
+# &nbsp; .item-obs { font-size: 11px; color: var(--text-dim); margin-top: 4px; font-style: italic; }
+
+# 
+
+# &nbsp; .cat-hidden, .row-hidden { display: none !important; }
+
+# 
+
+# &nbsp; /\* LEGEND \*/
+
+# &nbsp; .legend {
+
+# &nbsp;   display: flex; gap: 24px; flex-wrap: wrap;
+
+# &nbsp;   padding: 20px 56px;
+
+# &nbsp;   background: var(--surface);
+
+# &nbsp;   border-top: 1px solid var(--border-gold);
+
+# &nbsp;   margin-top: 8px;
+
+# &nbsp; }
+
+# &nbsp; .legend-item { display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--text-dim); font-family: 'DM Mono', monospace; }
+
+# &nbsp; .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+# &nbsp; .legend-norm { font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; margin-left: auto; letter-spacing: 0.04em; }
+
+# 
+
+# &nbsp; .gold-line {
+
+# &nbsp;   height: 1px;
+
+# &nbsp;   background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+
+# &nbsp;   opacity: 0.15;
+
+# &nbsp;   margin: 0 56px;
+
+# &nbsp; }
+
+# 
+
+# &nbsp; @media (max-width: 768px) {
+
+# &nbsp;   .header, .controls, .main, .legend { padding-left: 20px; padding-right: 20px; }
+
+# &nbsp;   .gold-line { margin: 0 20px; }
+
+# &nbsp;   th:nth-child(4), td:nth-child(4) { display: none; }
+
+# &nbsp; }
+
+# </style>
+
+# </head>
+
+# <body>
+
+# 
+
+# <div class="header">
+
+# &nbsp; <div class="logo-wrap">
+
+# &nbsp;   <div class="logo-mark"><span class="logo-m">M</span></div>
+
+# &nbsp;   <div class="logo-text">
+
+# &nbsp;     <span class="logo-name">MAC OPUS</span>
+
+# &nbsp;     <span class="logo-sub">Setor Bueno · Goiânia</span>
+
+# &nbsp;   </div>
+
+# &nbsp;   <div class="logo-divider"></div>
+
+# &nbsp;   <div class="logo-tagline">Plano de<br>Manutenção Preventiva</div>
+
+# &nbsp; </div>
+
+# 
+
+# &nbsp; <div class="header-badge">Manual das Áreas Comuns · ABNT NBR 5674</div>
+
+# &nbsp; <h1>Manutenção<br><em>Preventiva</em></h1>
+
+# &nbsp; <p class="header-sub">Rua T53 e Rua T27, Qd 87, Setor Bueno, Goiânia-GO.<br>Baseado no Manual das Áreas Comuns REV02 · Normas ABNT NBR 5674, 15575 e 14037.</p>
+
+# &nbsp; <div class="stats-row">
+
+# &nbsp;   <div class="stat"><div class="stat-val" id="totalItems">0</div><div class="stat-label">Itens de Manutenção</div></div>
+
+# &nbsp;   <div class="stat"><div class="stat-val" id="totalCats">0</div><div class="stat-label">Categorias</div></div>
+
+# &nbsp;   <div class="stat"><div class="stat-val" style="font-size:20px;padding-top:4px">ABNT</div><div class="stat-label">NBR 5674 · NBR 15575</div></div>
+
+# &nbsp; </div>
+
+# </div>
+
+# 
+
+# <div class="controls">
+
+# &nbsp; <div class="search-wrap">
+
+# &nbsp;   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+
+# &nbsp;   <input type="search" id="searchInput" placeholder="Buscar atividade, sistema, responsável…">
+
+# &nbsp; </div>
+
+# &nbsp; <div class="filter-chips">
+
+# &nbsp;   <span class="chip active" data-freq="todos">Todos</span>
+
+# &nbsp;   <span class="chip" data-freq="diaria">Diária</span>
+
+# &nbsp;   <span class="chip" data-freq="semanal">Semanal</span>
+
+# &nbsp;   <span class="chip" data-freq="quinzenal">Quinzenal</span>
+
+# &nbsp;   <span class="chip" data-freq="mensal">Mensal</span>
+
+# &nbsp;   <span class="chip" data-freq="trimestral">Trimestral</span>
+
+# &nbsp;   <span class="chip" data-freq="semestral">Semestral</span>
+
+# &nbsp;   <span class="chip" data-freq="anual">Anual</span>
+
+# &nbsp; </div>
+
+# </div>
+
+# 
+
+# <div class="main" id="mainContent"></div>
+
+# 
+
+# <div class="gold-line"></div>
+
+# <div class="legend">
+
+# &nbsp; <div class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Equipe local</div>
+
+# &nbsp; <div class="legend-item"><span class="legend-dot" style="background:var(--teal)"></span>Empresa capacitada</div>
+
+# &nbsp; <div class="legend-item"><span class="legend-dot" style="background:var(--purple)"></span>Empresa especializada</div>
+
+# &nbsp; <div class="legend-item"><span class="legend-dot" style="background:var(--text-dim)"></span>Ver observação</div>
+
+# &nbsp; <span class="legend-norm">ABNT NBR 5674 · NBR 15575 · NBR 14037 · MAC OPUS REV02</span>
+
+# </div>
+
+# 
+
+# <script>
+
+# const data = \[
+
+# &nbsp; { id:"hidraulica-agua-potavel", icon:"💧", name:"Instalações Hidráulicas — Água Potável", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Verificar o nível dos reservatórios, o funcionamento das torneiras de boia e a chave de boia para controle de nível",resp:"local"},
+
+# &nbsp;   {freq:"quinzenal",freqLabel:"Quinzenal",desc:"Utilizar e limpar as bombas em sistema de rodízio por meio da chave de alternância no painel elétrico (quando não houver reversão automática)",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar a estanqueidade e a pressão especificada para a válvula redutora de pressão das colunas de água potável",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar funcionalidade do extravasor (ladrão) dos reservatórios, evitando entupimentos por incrustações ou sujeiras",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar mecanismos internos da caixa acoplada",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar a estanqueidade dos registros de gaveta",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Abrir e fechar completamente os registros da cobertura (barrilete) para evitar emperramentos",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Limpar e verificar a regulagem dos mecanismos de descarga",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Efetuar manutenção nas bombas de recalque de água potável",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Limpar os arejadores (bicos removíveis) das torneiras",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar o sistema de pressurização de água: regulagem da pressão, reaperto dos componentes e parametrização dos sistemas elétricos/eletrônicos",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Limpar os reservatórios e fornecer atestado de potabilidade. Isolar tubulações da válvula redutora durante a limpeza",resp:"especializada",obs:"Empresa especializada. Também quando houver indícios de contaminação"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Limpar os filtros e efetuar revisão nas válvulas redutoras de pressão conforme orientações do fabricante",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a estanqueidade da válvula de descarga, torneira automática e torneira eletrônica (caso haja)",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar as tubulações de água potável para detectar obstruções, corrosão superficial e estanqueidade",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar e, se necessário, substituir os vedantes (courinhos) das torneiras, misturadores e registros de pressão",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar o funcionamento do sistema de aquecimento individual e efetuar limpeza e regulagem conforme legislação vigente",resp:"capacitada",obs:"Empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"hidraulica-pluvial", icon:"🌧️", name:"Instalações Hidráulicas — Águas Pluviais, Servidas e Esgoto", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal (chuvas intensas) / Mensal",desc:"Verificar e limpar os ralos e grelhas das águas pluviais, calhas e canaletas",resp:"local"},
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Efetuar limpeza geral nas caixas de esgoto, de gordura e de águas servidas",resp:"local"},
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Limpar os reservatórios de água não potável e realizar eventual manutenção do revestimento impermeável",resp:"local",obs:"Ou quando detectada alguma obstrução"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Abrir e fechar completamente os registros dos subsolos e cobertura (barrilete), evitando emperramento",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Efetuar manutenção nas bombas de recalque de águas pluviais",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral (estiagem) / Semanal (chuvas)",desc:"Verificar se as bombas submersas não estão encostadas no fundo do reservatório",resp:"mixed",obs:"Equipe local / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar as tubulações de captação de água do jardim para detectar raízes que possam destruir ou entupir as tubulações",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar as tubulações de água servida para detectar obstruções, perda de estanqueidade e fixação",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"spa", icon:"🛁", name:"SPA (Hidromassagem)", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Fazer teste de funcionamento conforme instruções do fornecedor",resp:"local"},
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Limpeza dos dispositivos que impossibilitem a entrada de resíduos na tubulação",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Refazer o rejuntamento das bordas com silicone específico ou mastique",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"incendio-hidrantes", icon:"🔥", name:"Proteção Contra Incêndio — Hidrantes", items:\[
+
+# &nbsp;   {freq:"quinzenal",freqLabel:"Quinzenal",desc:"Verificar a existência de vazamento e/ou outros defeitos nas tubulações, válvulas, registros e esguichos dos hidrantes",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar o estado de conservação geral das caixas, esguichos, registros, adaptadores, chaves de engate e puxador do abrigo",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar se os abrigos estão secos e desobstruídos",resp:"local"},
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Toda mangueira em uso (em prontidão para combate a incêndio) deve ser inspecionada",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"quadrimestral",freqLabel:"A cada 4 meses",desc:"Inspeção visual e limpeza das mangueiras e mangotinho",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Realizar inspeção visual e dimensional das mangueiras de incêndio; verificar dificuldade de acoplamento das uniões",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Realizar manutenção com ensaio hidrostático conforme ABNT NBR 12779 e promover identificação individual com nome do executante, data e validade",resp:"mixed",obs:"Empresa capacitada / especializada. Edifício não pode ficar sem mangueiras durante inspeção"},
+
+# &nbsp;   {freq:"bianual",freqLabel:"A cada 2 anos",desc:"Realizar testes e ensaios para determinar as condições de funcionamento do sistema: vazão, bomba de incêndio, alarmes",resp:"especializada",obs:"Brigada de incêndio / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"incendio-bomba", icon:"⛽", name:"Proteção Contra Incêndio — Reserva e Bomba de Incêndio", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Verificar o nível dos reservatórios de incêndio e o funcionamento das torneiras de boia",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar a estanqueidade do sistema e acionar a bomba de incêndio (por dreno da tubulação ou botoeira)",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar a estanqueidade dos registros de gaveta; abrir e fechar completamente os registros evitando emperramentos",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Efetuar manutenção nas bombas de incêndio",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"incendio-extintores", icon:"🧯", name:"Proteção Contra Incêndio — Extintores", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Conforme lacre",desc:"Revisar e recarregar os extintores conforme prazo indicado no lacre. Manutenção de 1º, 2º e 3º nível conforme ABNT NBR 12962",resp:"especializada",obs:"Empresa especializada registrada. Ensaio hidrostático a cada 5 anos"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar o estado e, se necessário, substituir as placas de sinalização das áreas de rota de fuga",resp:"local"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"incendio-detector", icon:"🔊", name:"Proteção Contra Incêndio — Detectores e Alarmes", items:\[
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Ensaio funcional de todos os acionadores manuais do sistema, dos comandos e dos painéis repetidores",resp:"mixed",obs:"Equipe local / empresa especializada. Periodicidade máxima: 3 meses"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Realizar um teste operacional em todos os detectores de fumaça e calor",resp:"local"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"incendio-porta", icon:"🚪", name:"Proteção Contra Incêndio — Porta Corta-fogo", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar o funcionamento automático e de todos os acessórios (fechaduras, dispositivos antipânico, selecionadores, travas). Efetuar limpeza dos alojadores de trincos, piso e batentes",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Lubrificação de todas as partes móveis; verificação da legibilidade dos identificadores; verificação das condições gerais e regulagem ou substituição dos elementos defeituosos",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"incendio-pressurizacao", icon:"💨", name:"Proteção Contra Incêndio — Pressurização de Escada", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Realizar a manutenção dos ventiladores e do gerador que suportam os sistemas de pressurização da escada",resp:"especializada",obs:"Empresa especializada. Manter contrato de manutenção"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"eletrica", icon:"⚡", name:"Instalações Elétricas", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Limpeza e verificação do estado de conservação de lâmpadas, luminárias e reatores. Substituição ou reparo de componentes queimados/danificados. Verificar oxidação de partes metálicas e integridade dos suportes",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Rever o estado de isolamento dos fios, conexões, interruptores, disjuntores e tomadas externas; verificar e manter estanqueidade das luminárias",resp:"capacitada",obs:"Empresa capacitada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Testar o disjuntor tipo DR apertando o botão. Se ao apertar o botão a energia não for interrompida, trocar o DR",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar o funcionamento da luz piloto de sinalização aérea (Lei 13.133/2015 — obrigatório, sob pena de multa)",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Rever o estado de isolamento das emendas de fios e providenciar correções se necessário",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar e, se necessário, reapertar as conexões do quadro de distribuição",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar o estado dos contatos elétricos (tomadas, interruptores, pontos de luz) e substituir peças com desgaste",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Realizar inspeção termográfica dos sistemas elétricos para visualização de possíveis sobrecargas e temperatura admissível dos componentes",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"bianual",freqLabel:"A cada 2 anos",desc:"Reapertar todas as conexões (tomadas, interruptores, pontos de luz e outros)",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"automacao", icon:"🤖", name:"Automação Predial", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar funcionamento do sistema de automação predial (iluminação das áreas comuns e bombas)",resp:"local",obs:"Manter contrato com empresa especializada credenciada pelo fabricante"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"gerador", icon:"⚙️", name:"Grupo Gerador", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Verificar, após o uso do equipamento, o nível de óleo combustível e se há obstrução nas entradas e saídas de ventilação",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"quinzenal",freqLabel:"Quinzenal",desc:"Efetuar teste de acionamento e funcionamento do sistema do gerador",resp:"local"},
+
+# &nbsp;   {freq:"quinzenal",freqLabel:"Quinzenal",desc:"Inspeção visual do motor do gerador e componentes do sistema (painel de controle, nível de combustível, etc.)",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"quinzenal",freqLabel:"Quinzenal / após cada uso",desc:"Verificar o nível de combustível do reservatório e, se necessário, complementar",resp:"local"},
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Verificar e, se necessário, efetuar manutenção do catalizador do gerador",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Limpar a cabine/carenagem do gerador",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar o funcionamento do sistema a plena carga, com todas as lâmpadas ligadas, avaliando as operações",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"emergencia", icon:"🔆", name:"Iluminação de Emergência", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Verificar o LED de funcionamento e carga do grupo gerador de emergência",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"quinzenal",freqLabel:"Quinzenal",desc:"Efetuar teste de acionamento e funcionamento do sistema de iluminação de emergência",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"quinzenal",freqLabel:"Quinzenal",desc:"Inspeção visual do motor gerador e componentes do sistema",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Efetuar as manutenções previstas no sistema do Grupo Gerador",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Fazer teste de funcionamento do sistema de blocos autônomos por 1 hora",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar o funcionamento do sistema a plena carga, com todas as lâmpadas ligadas, avaliando as operações",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"spda", icon:"⚡", name:"SPDA — Sistema de Proteção Contra Descargas Atmosféricas (Para-raios)", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar o status dos Dispositivos de Proteção Contra Surtos (DPS): verde = funcionamento normal",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Inspecionar e apontar visualmente eventuais pontos deteriorados no sistema para realizar a reconstituição necessária",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Inspecionar estruturas conforme ABNT NBR 5419. Atestado de SPDA exigido anualmente",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"trianual",freqLabel:"A cada 3 anos",desc:"Inspeções completas conforme ABNT NBR 5419. Inclui medição ôhmica com terrômetro calibrado pelo INMETRO",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"seguranca", icon:"📷", name:"Sistema de Segurança — CFTV", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Verificar se as câmeras de segurança estão funcionando adequadamente e se as imagens estão sendo gravadas corretamente",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar o funcionamento de todo o sistema de segurança",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Vistoria completa no sistema instalado e realização de manutenções",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"interfone", icon:"📞", name:"Telefonia e Sistema de Interfones", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar o funcionamento do sistema de interfones conforme instruções do fornecedor",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Vistoria completa no sistema instalado e realização de manutenções",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"elevadores", icon:"🛗", name:"Elevadores e Plataforma Elevatória de Acessibilidade", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Contratual (mensal)",desc:"Manutenção preventiva e corretiva obrigatória com empresa especializada autorizada pelo fabricante, conforme ABNT NBR 16083",resp:"especializada",obs:"Obrigatório manter contrato de manutenção. Empresa autorizada pelo fabricante"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Efetuar teste do sistema automático de funcionamento dos elevadores com energia elétrica proveniente dos geradores",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Efetuar teste do sistema automático de resgate de passageiros dos elevadores",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"portoes", icon:"🚧", name:"Automação de Portões", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Fazer a manutenção dos sistemas de automação dos portões conforme instruções do fornecedor (motores elétricos, fechaduras elétricas, sensores, controles)",resp:"especializada",obs:"Empresa especializada. Manter contrato de manutenção"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"arcondicionado", icon:"❄️", name:"Ar Condicionado (Áreas Comuns)", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Ligar o sistema de ar condicionado (manter funcionamento regular)",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Realizar limpeza dos componentes e filtros, mesmo em período de não utilização",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Realizar a manutenção dos ventiladores do sistema de ar condicionado",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar se está funcionando corretamente e se as unidades de montagem estão firmemente instaladas",resp:"local"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"exaustao", icon:"🌀", name:"Sistema de Exaustão Mecânica", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Realizar a manutenção dos ventiladores que compõem os sistemas de exaustão mecânica",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Limpeza do aparelho do ventokit",resp:"local"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"sauna", icon:"🧖", name:"Sauna Úmida", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Fazer a drenagem de água no equipamento (escoar a água abrindo a torneira ou tampão)",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Regular e verificar a calibragem do termostato conforme recomendação do fabricante",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"churrasqueira", icon:"🔥", name:"Churrasqueira para Uso a Carvão", items:\[
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Fazer limpeza geral da churrasqueira (com vassoura ou pano úmido, com a churrasqueira fria; nunca utilize água)",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar os revestimentos e tijolos refratários e, havendo necessidade, providenciar reparos",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"gas", icon:"🔵", name:"Instalações de Gás", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar possível vazamento de gás, a integridade das instalações e se as ventilações permanentes estão livres e desobstruídas",resp:"local",obs:"Também verificar quando sentir cheiro de gás"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Checkup completo do sistema de gás: verificar funcionamento, limpeza, regulagem e estanqueidade dos equipamentos e tubulações conforme ABNT e normas do Corpo de Bombeiros",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"A cada 5 anos (validade)",desc:"Verificar a validade da mangueira de gás, que tem prazo de cinco anos",resp:"local"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"impermeabilizacao", icon:"🛡️", name:"Impermeabilização", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a integridade e reconstituir os rejuntamentos internos e externos dos pisos, paredes, peitoris, soleiras, ralos, peças sanitárias, chaminés e grelhas de ventilação",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Inspecionar a camada drenante do jardim; limpar obstruções na tubulação e entupimentos dos ralos ou grelhas",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a integridade dos sistemas de impermeabilização e reconstituir a proteção mecânica, sinais de infiltração ou falhas da impermeabilização expostas",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"esquadrias-madeira", icon:"🪵", name:"Esquadrias de Madeira", items:\[
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar a existência de fungos, mofos, bolores e focos de insetos e tratar quando necessário",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"No caso de esquadrias envernizadas, realizar tratamento com verniz",resp:"capacitada",obs:"Empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar falhas de vedação e fixação das esquadrias e reconstituir sua integridade; reapertar parafusos aparentes e regular freio e lubrificação",resp:"capacitada",obs:"Empresa capacitada"},
+
+# &nbsp;   {freq:"bianual",freqLabel:"A cada 2 anos",desc:"Verificar e, se necessário, pintar, encerar, envernizar ou executar tratamento recomendado pelo fornecedor das esquadrias de madeira",resp:"mixed",obs:"Equipe local / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"esquadrias-ferro", icon:"🔩", name:"Esquadrias de Ferro e Aço", items:\[
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar as esquadrias para identificação de pontos de oxidação e, se necessário, proceder reparos",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar e, se necessário, executar serviços com as mesmas especificações da pintura original; verificar vedação e fixação de vidros",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Realizar inspeção das condições de fixação e solidez do guarda-corpo, corrimão e barras, reconstituir onde necessário",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"esquadrias-aluminio", icon:"🔲", name:"Esquadrias de Alumínio", items:\[
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Efetuar limpeza geral, regulagem, lubrificação e desobstrução dos drenos nos trilhos inferiores, mecanismos de fechamento e demais componentes",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Reapertar os parafusos aparentes de fechos, fechaduras, puxadores e roldanas; verificar janelas Maxim-ar",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar vedação e fixação dos vidros; verificar a presença de falhas na vedação e fixação nos caixilhos",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Realizar inspeção das condições de fixação e solidez do guarda-corpo, corrimão e barras",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"estrutura", icon:"🏗️", name:"Estrutura (Fundações, Pilares, Vigas, Lajes)", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar integridade estrutural (fundações, estrutura principal, estruturas periféricas, contenções, arrimos, guarda-corpos, muros de divisa)",resp:"especializada",obs:"Empresa especializada. Garantia estrutural: 5 anos"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"alvenaria", icon:"🧱", name:"Alvenaria de Vedação e Paredes", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar integridade estrutural das paredes de vedação, estruturas auxiliares e de cobertura, escadarias, guarda-corpos e telhados",resp:"especializada",obs:"Empresa especializada. Garantia de segurança e integridade: 5 anos"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"fachada", icon:"🏢", name:"Revestimento Externo e Fachada", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a integridade e reconstituir juntas (frisos), mastiques, rejuntes, borrachas e selantes da fachada. Verificar calafetação, fixação e estado geral de rufos, para-raios, antenas, esquadrias e elementos decorativos",resp:"mixed",obs:"Equipe local / empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a integridade e reconstituir os rejuntamentos externos, peitoris, chaminés e grelhas de ventilação",resp:"mixed",obs:"Equipe local / empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"trianual",freqLabel:"A cada 3 anos",desc:"Verificar a presença de fissuras, rachaduras, desgastes excessivos com mapeamento de áreas soltas ou com som cavo",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"trianual",freqLabel:"A cada 3 anos",desc:"Nos revestimentos externos e fachada: repintura, com lavagem e tratamento de fissuras precedentes",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Antes de cada uso / Anual",desc:"Inspecionar visualmente os pontos de ancoragem da fachada (corrosão, deformação, trincas e desgaste) conforme NBR 16325-1",resp:"mixed",obs:"Antes de cada uso: equipe local. Anual: empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"revestimento-parede", icon:"🖌️", name:"Revestimento de Paredes e Tetos (Argamassa, Gesso, Forro)", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Repintar os forros dos banheiros e áreas úmidas; verificar a calafetação e fixação de rufos, para-raios, antenas e elementos decorativos",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"bianual",freqLabel:"A cada 2 anos",desc:"Revisar a pintura das áreas secas e, se necessário, repintá-las, evitando envelhecimento, perda de brilho e descascamento",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"trianual",freqLabel:"A cada 3 anos",desc:"Repintar paredes e tetos das áreas secas",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"revestimento-ceramico", icon:"🔷", name:"Revestimento Cerâmico (Pisos e Paredes)", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar e, se necessário, efetuar manutenções para manter a estanqueidade do sistema; verificar integridade e reconstituir os rejuntamentos",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"pedras", icon:"💎", name:"Revestimentos de Pedras Naturais (Mármore, Granito)", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"No caso de peças polidas, verificar a integridade do polimento e, se necessário, encerar. Em áreas de circulação intensa, encerar com maior frequência",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a calafetação de rufos, fixação de para-raios, antenas e elementos decorativos. Verificar a integridade e reconstituir rejuntamentos; verificar juntas de dilatação (preencher com mastique, nunca argamassa)",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"assoalho", icon:"🌲", name:"Assoalhos e Deck de Madeira", items:\[
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar a existência de fungos, mofos, bolores e focos de insetos e tratar quando necessário",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar e, se necessário, refazer a calafetação das juntas dos assoalhos de madeira",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Revisar a camada protetora do deck (verniz, selante etc.) e, se necessária, remover e refazer para retornar ao desempenho inicialmente planejado",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"pinturas", icon:"🎨", name:"Pinturas, Texturas e Vernizes (Interna e Externa)", items:\[
+
+# &nbsp;   {freq:"bianual",freqLabel:"A cada 2 anos",desc:"Revisar a pintura das áreas secas e, se necessário, repintá-las, evitando envelhecimento, perda de brilho, descascamento e fissuras",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"trianual",freqLabel:"A cada 3 anos",desc:"Repintar paredes e tetos das áreas secas com as mesmas especificações da pintura original",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"trianual",freqLabel:"A cada 3 anos",desc:"Revisar e, se necessário, repintar as áreas externas",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"vidros", icon:"🪟", name:"Vidros", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Nos locais com vidros temperados, efetuar inspeção do funcionamento do sistema de molas e dobradiças e verificar a necessidade de lubrificação",resp:"especializada",obs:"Empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar o desempenho das vedações e fixações dos vidros nos caixilhos",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"quadra", icon:"🏸", name:"Infraestrutura para Prática Recreativa — Quadra", items:\[
+
+# &nbsp;   {freq:"bimestral",freqLabel:"A cada 2 meses",desc:"Executar a manutenção do jardim próximo à quadra para evitar problemas de drenagem e impedir que raízes se infiltrem sob o piso",resp:"local"},
+
+# &nbsp;   {freq:"trimestral",freqLabel:"Trimestral",desc:"Verificar a existência de oxidação das partes metálicas e repintar quando necessário; verificar equipamentos de regulagem, fixação, aperto, folgas e conservação",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Realizar lixamento e aplicação de tintas quando necessário",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Pintar os equipamentos esportivos ou quando a camada de tinta for danificada pelo uso, evitando oxidações",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"bianual",freqLabel:"A cada 2 anos",desc:"Esticar as telas da quadra onde necessário",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"trianual",freqLabel:"A cada 3 anos (ou quando necessário)",desc:"Repintar a superfície de pisos de concreto polido pintado em função do uso da quadra",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"jardins", icon:"🌿", name:"Jardins", items:\[
+
+# &nbsp;   {freq:"diaria",freqLabel:"Diária (verão)",desc:"Regar, preferencialmente no início da manhã ou final da tarde, molhando inclusive as folhas",resp:"local"},
+
+# &nbsp;   {freq:"diaria",freqLabel:"A cada 2 dias (inverno)",desc:"Regar, preferencialmente no início da manhã ou final da tarde",resp:"local"},
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Verificar o funcionamento dos dispositivos de irrigação",resp:"local"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Executar a manutenção geral do jardim: limpeza, retirada de folhas velhas, galhos secos e detritos",resp:"mixed",obs:"Equipe local / jardineiro qualificado"},
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar e controlar a presença de pragas, ervas daninhas, plantas invasivas, raízes mortas e torrões de terra seca",resp:"mixed",obs:"Equipe local / jardineiro qualificado"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"A cada 45 dias (ou quando altura atingir 5cm)",desc:"Cortar a grama e realizar limpeza (remoção de galhos e folhas secas)",resp:"mixed",obs:"Equipe local / jardineiro qualificado"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Realizar o replantio de mudas e a cobertura para grama e jardins com terra adubada, de preferência no inverno",resp:"mixed",obs:"Equipe local / jardineiro qualificado"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"playground", icon:"🛝", name:"Área de Recreação Infantil (Playground)", items:\[
+
+# &nbsp;   {freq:"mensal",freqLabel:"Mensal",desc:"Verificar a integridade dos brinquedos: superfícies cortantes, lascas, parafusos soltos, encaixes folgados, rachaduras, partes metálicas oxidadas, descascamento de pintura e falta de componentes",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Realizar vistoria de responsabilidade técnica, verificando todos os requisitos de segurança listados na ABNT NBR 16071-7",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Lixar e pintar com zarcão e tinta à base de esmalte as partes metálicas oxidadas (parafusos, correntes de balanços)",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar, tratar e, se necessário, recuperar as características originais dos brinquedos de madeira",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"piscina", icon:"🏊", name:"Piscina", items:\[
+
+# &nbsp;   {freq:"diaria",freqLabel:"Diária",desc:"Passar a peneira na água e aspirar sujeiras depositadas no fundo da piscina",resp:"local"},
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Lavar o filtro da piscina",resp:"local"},
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Verificar vazamentos e ruídos nas bombas da piscina",resp:"local"},
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Efetuar retrolavagem e remoção de eventuais eflorescências",resp:"local"},
+
+# &nbsp;   {freq:"semanal",freqLabel:"Semanal",desc:"Controlar o pH da água da piscina",resp:"local"},
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar a estanqueidade das luminárias submersas da piscina",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar o estado do rejuntamento e a integridade das juntas, cerâmicas, porcelanatos e juntas estruturais; verificar fissuras e revestimentos soltos",resp:"local"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a integridade estrutural dos sistemas de impermeabilização e reconstituir a proteção mecânica, sinais de infiltrações ou falhas da impermeabilização exposta",resp:"local"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"climatizador-piscina", icon:"🌡️", name:"Climatizadores de Água da Piscina", items:\[
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificação completa do sistema dos climatizadores de água da piscina, seguindo as instruções do manual do fabricante",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# &nbsp; { id:"cobertura", icon:"🏛️", name:"Cobertura (Laje Impermeabilizada e Rufos)", items:\[
+
+# &nbsp;   {freq:"semestral",freqLabel:"Semestral",desc:"Verificar a integridade dos protetores térmicos e efetuar limpeza e reparos para garantir a funcionalidade. Em épocas de chuvas fortes, inspecionar as calhas semanalmente",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a integridade estrutural dos componentes, vedações, fixações e reconstituir e tratar onde necessário",resp:"mixed",obs:"Empresa capacitada / empresa especializada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Nas lajes expostas: verificar e eliminar a presença de pragas, ervas daninhas, plantas invasivas e raízes; aplicar herbicida se necessário",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a calafetação e fixação de rufos, calhas, antenas, esquadrias, esticadores, elementos fixadores e isolantes; reconstituir rejuntamentos e juntas de dilatação",resp:"mixed",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp;   {freq:"anual",freqLabel:"Anual",desc:"Verificar a presença de danos (rasgos, perfurações, descolamentos e fissuras) na camada impermeabilizante causados por impactos mecânicos ou trânsito de pessoas",resp:"local",obs:"Equipe local / empresa capacitada"},
+
+# &nbsp; ]},
+
+# ];
+
+# 
+
+# function getFreqClass(f) {
+
+# &nbsp; const m={diaria:'freq-diaria',semanal:'freq-semanal',quinzenal:'freq-quinzenal',mensal:'freq-mensal',bimestral:'freq-bimestral',trimestral:'freq-trimestral',quadrimestral:'freq-quadrimestral',semestral:'freq-semestral',anual:'freq-anual',bianual:'freq-bianual',trianual:'freq-trianual'};
+
+# &nbsp; return m\[f]||'freq-mensal';
+
+# }
+
+# function getRespClass(r){return{local:'resp-local',capacitada:'resp-cap',especializada:'resp-espec',mixed:'resp-mixed'}\[r]||'resp-mixed';}
+
+# function getRespLabel(r){return{local:'Equipe Local',capacitada:'Empresa Capacitada',especializada:'Empresa Especializada',mixed:'Ver observação'}\[r]||r;}
+
+# 
+
+# function render(){
+
+# &nbsp; const c=document.getElementById('mainContent'); let n=0;
+
+# &nbsp; c.innerHTML=data.map(cat=>{n+=cat.items.length;
+
+# &nbsp;   return`<div class="category-block" id="${cat.id}">
+
+# &nbsp;     <div class="cat-header" onclick="toggleCat('${cat.id}')">
+
+# &nbsp;       <div class="cat-icon">${cat.icon}</div>
+
+# &nbsp;       <div class="cat-info">
+
+# &nbsp;         <div class="cat-name">${cat.name}</div>
+
+# &nbsp;         <div class="cat-count">${cat.items.length} item${cat.items.length>1?'s':''} de manutenção</div>
+
+# &nbsp;       </div>
+
+# &nbsp;       <span class="cat-chevron">›</span>
+
+# &nbsp;     </div>
+
+# &nbsp;     <div class="items-table" id="table-${cat.id}">
+
+# &nbsp;       <table>
+
+# &nbsp;         <thead><tr><th style="width:55%">Atividade</th><th style="width:22%">Periodicidade</th><th style="width:23%">Responsável</th></tr></thead>
+
+# &nbsp;         <tbody>${cat.items.map(item=>`
+
+# &nbsp;           <tr class="item-row" data-freq="${item.freq}" data-text="${(item.desc+(item.obs||'')).toLowerCase()}">
+
+# &nbsp;             <td><div>${item.desc}</div>${item.obs?`<div class="item-obs">ℹ ${item.obs}</div>`:''}</td>
+
+# &nbsp;             <td><span class="freq-badge ${getFreqClass(item.freq)}">${item.freqLabel}</span></td>
+
+# &nbsp;             <td><span class="resp"><span class="resp-dot ${getRespClass(item.resp)}"></span>${getRespLabel(item.resp)}</span></td>
+
+# &nbsp;           </tr>`).join('')}
+
+# &nbsp;         </tbody>
+
+# &nbsp;       </table>
+
+# &nbsp;     </div>
+
+# &nbsp;   </div>`;
+
+# &nbsp; }).join('');
+
+# &nbsp; document.getElementById('totalItems').textContent=n;
+
+# &nbsp; document.getElementById('totalCats').textContent=data.length;
+
+# }
+
+# 
+
+# function toggleCat(id){
+
+# &nbsp; const t=document.getElementById('table-'+id), h=document.querySelector(`#${id} .cat-header`);
+
+# &nbsp; t.classList.toggle('open'); h.classList.toggle('open');
+
+# }
+
+# 
+
+# let activeFreq='todos', searchText='';
+
+# function applyFilters(){
+
+# &nbsp; data.forEach(cat=>{
+
+# &nbsp;   const block=document.getElementById(cat.id), rows=block.querySelectorAll('.item-row');
+
+# &nbsp;   let any=false;
+
+# &nbsp;   rows.forEach(row=>{
+
+# &nbsp;     const v=(activeFreq==='todos'||row.dataset.freq===activeFreq)\&\&(!searchText||row.dataset.text.includes(searchText));
+
+# &nbsp;     row.classList.toggle('row-hidden',!v); if(v) any=true;
+
+# &nbsp;   });
+
+# &nbsp;   block.classList.toggle('cat-hidden',!any);
+
+# &nbsp;   if(any\&\&(activeFreq!=='todos'||searchText)){
+
+# &nbsp;     document.getElementById('table-'+cat.id).classList.add('open');
+
+# &nbsp;     block.querySelector('.cat-header').classList.add('open');
+
+# &nbsp;   }
+
+# &nbsp; });
+
+# }
+
+# 
+
+# document.addEventListener('DOMContentLoaded',()=>{
+
+# &nbsp; render();
+
+# &nbsp; document.querySelectorAll('.chip').forEach(chip=>{
+
+# &nbsp;   chip.addEventListener('click',()=>{
+
+# &nbsp;     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+
+# &nbsp;     chip.classList.add('active'); activeFreq=chip.dataset.freq; applyFilters();
+
+# &nbsp;   });
+
+# &nbsp; });
+
+# &nbsp; document.getElementById('searchInput').addEventListener('input',e=>{
+
+# &nbsp;   searchText=e.target.value.toLowerCase().trim(); applyFilters();
+
+# &nbsp; });
+
+# });
+
+# </script>
+
+# </body>
+
+# </html>
+
